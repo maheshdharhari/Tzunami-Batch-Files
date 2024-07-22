@@ -16,7 +16,7 @@ set configFile=%SourceExporterConfigXmlFile%\%exporterConfigFile%
 set targetConfigFile=%TargetDir%\ExporterConfiguration.xml
 
 :: Source Dir
-echo %SourceDir%
+:: echo %SourceDir%
 :: Target directory for AnyCPU
 :: echo %TargetDir%
 :: Configurations directory
