@@ -18,20 +18,20 @@ set targetConfigFile=%TargetDir%\ExporterConfiguration.xml
 :: Source Dir
 echo %SourceDir%
 :: Target directory for AnyCPU
-echo %TargetDir%
+:: echo %TargetDir%
 :: Configurations directory
-echo %SourceExporterConfigXmlFile%
+:: echo %SourceExporterConfigXmlFile%
 :: Config source file path
-echo %configFile%
+:: echo %configFile%
 :: Config target file path
-echo %targetConfigFile%
+:: echo %targetConfigFile%
 
 echo ========== Copying files of '%exporterTitle%' to 'Tzunami Generic Exporter AnyCPU\bin\Debug\' ==========
 echo ___________________________________________________________________________________________________________
 
 xcopy /y "%SourceDir%\*.*" "%TargetDir%\"
-xcopy /y "%SourceDir%\.Net DLLs\*.*" "%TargetDir%\"
-xcopy /y "%SourceDir%\.Net DLLs\Supporting dlls\*.*" "%TargetDir%\"
+xcopy /y "%rootPath%Deployer\TzDE2 .net2\Exporters\%exporter%\.Net DLLs\*.*" "%TargetDir%\"
+xcopy /y "%rootPath%Deployer\TzDE2 .net2\Exporters\%exporter%\.Net DLLs\Supporting dlls\*.*" "%TargetDir%\"
 
 echo ========== Copied files of '%exporterTitle%' to 'Tzunami Generic Exporter AnyCPU\bin\Debug\' ==========
 echo __________________________________________________________________________________________________________
