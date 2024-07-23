@@ -1,15 +1,37 @@
 @echo off
 for /f "tokens=1,2 delims==" %%a in (..\..\settings.ini) do (
     if %%a==rootPath set %%a=%%b
-	if %%a==targetPathAnyCpu set %%a=%%b
+    if %%a==exporterTargetPathAnyCpu set %%a=%%b
+    if %%a==exporterTargetPath set %%a=%%b
+    if %%a==configurationsPath set %%a=%%b
 )
-set SourceDir=%rootPath%Deployer\TzDE2 .net2\Exporters\Tzunami.Common.EcmContentServerExporter\bin\Debug
-set TargetDir=%rootPath%%targetPathAnyCpu%
 
-echo ========== Copying files of 'Content Server Exporter' to 'Tzunami Generic Exporter AnyCPU\bin\Debug\' ==========
+set exporterTitle=Content Server Exporter
+set exporter=Tzunami.Common.EcmContentServerExporter
+set exporterConfigFile=ContentServerExporterConfiguration.xml
+
+
+set SourceDir=%rootPath%Deployer\TzDE2 .net2\Exporters\%exporter%\bin\Debug
+set TargetDir=%rootPath%%exporterTargetPathAnyCpu%
+set SourceExporterConfigXmlFile=%rootPath%%configurationsPath%
+set configFile=%SourceExporterConfigXmlFile%\%exporterConfigFile%
+set targetConfigFile=%TargetDir%\ExporterConfiguration.xml
+
+:: Source Dir
+echo %SourceDir%
+:: Target directory for AnyCPU
+echo %TargetDir%
+:: Configurations directory
+echo %SourceExporterConfigXmlFile%
+:: Config source file path
+echo %configFile%
+:: Config target file path
+echo %targetConfigFile%
+
+echo ========== Copying files of '%exporterTitle%' to 'Tzunami Generic Exporter AnyCPU\bin\Debug\' ==========
 echo ___________________________________________________________________________________________________________
 
-copy /Y  "%SourceDir%\Tzunami.Common.EcmContentServerExporter.*" "%TargetDir%\Tzunami.Common.EcmContentServerExporter.*" 
+copy /Y  "%SourceDir%\%exporter%.*" "%TargetDir%\%exporter%.*" 
 
-echo ========== Copied files of 'Content Server Expoerter' to 'Tzunami Generic Exporter AnyCPU\bin\Debug\' ==========
+echo ========== Copied files of '%exporterTitle%' to 'Tzunami Generic Exporter AnyCPU\bin\Debug\' ==========
 echo __________________________________________________________________________________________________________
