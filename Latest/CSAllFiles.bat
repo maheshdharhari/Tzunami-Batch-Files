@@ -1,5 +1,5 @@
-@echo off
-for /f "tokens=1,2 delims==" %%a in (settings.ini) do (
+set settingFile=G:\Tzunami\Tzunami-Batch-Files\Latest\settings.ini
+for /f "tokens=1,2 delims==" %%a in (settingFile) do (
     if %%a==rootPath set %%a=%%b
     if %%a==exporterTargetPathAnyCpu set %%a=%%b
 )
